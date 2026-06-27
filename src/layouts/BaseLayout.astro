@@ -1,0 +1,164 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title       = 'Arshad Ali | Senior Frontend Developer | React.js Angular Vue.js | Bengaluru',
+  description = 'Senior Frontend Developer with 5+ years building fintech & banking apps. Expert in React.js, Angular 16, Vue.js, Redux, TypeScript, Material UI. Based in Bengaluru, India.',
+  canonical   = Astro.url.href,
+  ogImage     = 'https://arshadali.dev/og-image.png',
+  noindex     = false,
+} = Astro.props;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Arshad Ali",
+  "jobTitle": "Senior Frontend Developer",
+  "description": description,
+  "url": "https://arshadali.dev",
+  "email": "arshadali1515@gmail.com",
+  "telephone": "+918427041280",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bengaluru",
+    "addressRegion": "Karnataka",
+    "addressCountry": "IN"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/in/arshad-ali-software-engineer/"
+  ],
+  "knowsAbout": [
+    "React.js","Angular","Vue.js","TypeScript","JavaScript",
+    "Redux","Material UI","Fintech","Frontend Development","REST APIs"
+  ],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Lovely Professional University"
+  },
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Daytona Systems India Pvt. Ltd."
+  }
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Arshad Ali — Portfolio",
+  "url": "https://arshadali.dev",
+  "description": description
+};
+---
+
+<!doctype html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Primary Meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author"      content="Arshad Ali" />
+    <meta name="robots"      content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large'} />
+    <meta name="keywords"    content="Arshad Ali, Frontend Developer, React.js Developer, Angular Developer, Vue.js Developer, Senior Frontend Developer, Bengaluru, Fintech Developer, JavaScript Developer, TypeScript, Redux, Material UI, Portfolio" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:title"       content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height"content="630" />
+    <meta property="og:site_name"   content="Arshad Ali Portfolio" />
+    <meta property="og:locale"      content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={ogImage} />
+
+    <!-- Favicon -->
+    <link rel="icon"             type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+    <!-- Theme color (mobile browser bar) -->
+    <meta name="theme-color" content="#0A0E17" />
+  </head>
+  <body>
+    <slot />
+
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <script>
+      // Scroll progress
+      const bar = document.getElementById('scroll-progress');
+      window.addEventListener('scroll', () => {
+        if (!bar) return;
+        const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        bar.style.width = pct + '%';
+      }, { passive: true });
+
+      // Intersection Observer — animate elements into view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('[data-observe]').forEach(el => observer.observe(el));
+    </script>
+
+    <style is:global>
+      #scroll-progress {
+        position: fixed;
+        top: 0; left: 0;
+        height: 2px;
+        width: 0%;
+        background: linear-gradient(90deg, #00D084, #4F8EF7);
+        z-index: 9999;
+        transition: width 0.1s linear;
+      }
+      [data-observe] {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+      [data-observe].in-view {
+        opacity: 1;
+        transform: none;
+      }
+      [data-observe].delay-1 { transition-delay: 0.1s; }
+      [data-observe].delay-2 { transition-delay: 0.2s; }
+      [data-observe].delay-3 { transition-delay: 0.3s; }
+      [data-observe].delay-4 { transition-delay: 0.4s; }
+      [data-observe].delay-5 { transition-delay: 0.5s; }
+    </style>
+  </body>
+</html>

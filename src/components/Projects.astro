@@ -1,0 +1,231 @@
+---
+const projects = [
+  {
+    title:   'HP-TMS Banking Fraud Monitoring System',
+    domain:  'Fintech · Banking',
+    summary: 'Enterprise banking fraud monitoring and transaction management platform with real-time fraud detection, advanced dashboards, and secure REST API integrations.',
+    tech:    ['React.js', 'Redux Saga', 'Material UI', 'REST APIs', 'TypeScript'],
+    icon:    '🏦',
+    color:   '#00D084',
+    points: [
+      'Advanced dashboards for fraud detection, transaction tracking, and risk analysis',
+      'Reusable UI components: dynamic forms, modals, data tables, filtering systems',
+      'Real-time banking transaction monitoring via secure REST APIs',
+      'Asynchronous workflow management with Redux Saga',
+    ],
+  },
+  {
+    title:   'VodayPay / HelloPaisa WebView App',
+    domain:  'Fintech · Mobile Banking',
+    summary: 'Secure WebView-based financial application for mobile banking and payment workflows, integrated with Alipay and external banking APIs for seamless digital payments.',
+    tech:    ['Vue.js', 'Alipay Integration', 'REST APIs', 'Mobile WebView'],
+    icon:    '💳',
+    color:   '#4F8EF7',
+    points: [
+      'Alipay payment gateway integration for digital payment processing',
+      'Responsive UI optimised for Android and iOS WebView environments',
+      'Resolved platform-specific issues including iOS WebView deep linking',
+      'Modular Vue.js architecture improving maintainability and performance',
+    ],
+  },
+  {
+    title:   'OPEN-CRM Banking Inventory System',
+    domain:  'Enterprise · Banking',
+    summary: 'Enterprise inventory management system for tracking banking hardware — debit cards, POS machines, and devices — with dynamic dashboards and approval workflows.',
+    tech:    ['Angular 16', 'TypeScript', 'REST APIs', 'Material Design'],
+    icon:    '📦',
+    color:   '#A855F7',
+    points: [
+      'Dynamic dashboards for inventory tracking, reporting, and approval workflows',
+      'Advanced search/filter for optimised user workflow efficiency',
+      'REST API integrations for stock management, user roles, and transactions',
+      'Custom inventory management features built for banking requirements',
+    ],
+  },
+  {
+    title:   'HelloPaisa UK — Banking Web App',
+    domain:  'Fintech · UK Banking',
+    summary: 'Enterprise-level banking and financial web application for UK-based users with secure transaction workflows, compliance validations, and API-driven architecture.',
+    tech:    ['React.js', 'Formik', 'Yup', 'REST APIs', 'TypeScript'],
+    icon:    '🇬🇧',
+    color:   '#F59E0B',
+    points: [
+      'Secure transaction workflows, approval systems, and compliance validations',
+      'Complex banking form validations using Formik and Yup',
+      'Reusable banking components with secure REST API integration',
+      'Agile/Scrum delivery across multiple sprint cycles',
+    ],
+  },
+  {
+    title:   'Finance Management System',
+    domain:  'Enterprise · Finance',
+    summary: 'Financial management dashboards and enterprise reporting system handling large datasets with AG Grid and optimised component architecture.',
+    tech:    ['React.js', 'Material UI', 'AG Grid', 'REST APIs'],
+    icon:    '📊',
+    color:   '#10B981',
+    points: [
+      'AG Grid implementation for large dataset handling with sort, filter, pagination',
+      'Reusable UI components: tables, forms, notifications, modals',
+      'Modular architecture and clean coding standards for maintainability',
+      'Enterprise reporting dashboards with real-time data visualisations',
+    ],
+  },
+  {
+    title:   'WordPress E-Commerce Platforms',
+    domain:  'Web Dev · E-Commerce',
+    summary: 'Multiple responsive WordPress and WooCommerce websites across e-commerce, healthcare, real estate, and retail sectors with payment gateway integrations.',
+    tech:    ['WordPress', 'WooCommerce', 'Elementor', 'Bootstrap', 'PHP', 'jQuery'],
+    icon:    '🛒',
+    color:   '#F97316',
+    points: [
+      'WooCommerce platforms with payment gateway integrations',
+      'Custom WordPress themes and plugin development',
+      'SEO optimisation, speed improvements, and mobile responsiveness',
+      'Served real estate, hospital, school, and corporate clients',
+    ],
+  },
+];
+---
+
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="proj-header" data-observe>
+      <span class="section-eyebrow">Portfolio</span>
+      <h2 class="section-title">Key <span>Projects</span></h2>
+      <p class="section-desc">
+        Production applications built for fintech, banking, and enterprise clients —
+        serving real users at scale.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      {projects.map((p, i) => (
+        <article class={`proj-card card delay-${(i % 3) + 1}`} data-observe style={`--accent:${p.color}`}>
+          <div class="proj-top">
+            <div class="proj-icon-wrap">
+              <span class="proj-icon" aria-hidden="true">{p.icon}</span>
+            </div>
+            <span class="proj-domain tag">{p.domain}</span>
+          </div>
+
+          <h3 class="proj-title">{p.title}</h3>
+          <p class="proj-summary">{p.summary}</p>
+
+          <ul class="proj-bullets">
+            {p.points.map(pt => (
+              <li>
+                <span class="proj-bullet" aria-hidden="true">▹</span>
+                {pt}
+              </li>
+            ))}
+          </ul>
+
+          <div class="proj-footer">
+            <div class="proj-tech">
+              {p.tech.map(t => <span class="tag tag-sm">{t}</span>)}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects { background: var(--bg); }
+
+  .proj-header { margin-bottom: 56px; }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .proj-card {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .proj-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent, var(--green));
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+  .proj-card:hover::before { opacity: 1; }
+
+  .proj-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .proj-icon-wrap {
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+
+  .proj-domain {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    background: rgba(255,255,255,0.05);
+    color: var(--text-muted);
+    border-color: var(--border);
+  }
+
+  .proj-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.4;
+  }
+
+  .proj-summary {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  .proj-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+  .proj-bullets li {
+    display: flex;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .proj-bullet { color: var(--accent, var(--green)); flex-shrink: 0; }
+
+  .proj-footer { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); }
+
+  .proj-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag-sm { font-size: 0.7rem; padding: 3px 10px; }
+
+  @media (max-width: 1100px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+</style>

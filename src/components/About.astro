@@ -1,0 +1,237 @@
+---
+const stats = [
+  { num: '5+',  label: 'Years Experience'   },
+  { num: '10+', label: 'Projects Delivered' },
+  { num: '3',   label: 'Frameworks Mastered'},
+  { num: '2',   label: 'Companies Served'   },
+];
+---
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Left: Code card -->
+      <div class="code-card" data-observe>
+        <div class="code-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="code-filename mono">arshad.config.ts</span>
+        </div>
+        <pre class="code-body"><code><span class="c-kw">const</span> <span class="c-var">developer</span> <span class="c-op">=</span> &#123;
+  <span class="c-prop">name</span><span class="c-op">:</span>     <span class="c-str">"Arshad Ali"</span>,
+  <span class="c-prop">role</span><span class="c-op">:</span>     <span class="c-str">"Senior Frontend Dev"</span>,
+  <span class="c-prop">location</span><span class="c-op">:</span><span class="c-str">"Bengaluru, India 🇮🇳"</span>,
+  <span class="c-prop">exp</span><span class="c-op">:</span>      <span class="c-num">5</span><span class="c-op">+</span>,
+
+  <span class="c-prop">frameworks</span><span class="c-op">:</span> [
+    <span class="c-str">"React.js"</span>,
+    <span class="c-str">"Angular 16"</span>,
+    <span class="c-str">"Vue.js"</span>,
+  ],
+  <span class="c-prop">domains</span><span class="c-op">:</span> [
+    <span class="c-str">"Fintech"</span>,
+    <span class="c-str">"Banking"</span>,
+    <span class="c-str">"Enterprise"</span>,
+  ],
+  <span class="c-prop">passion</span><span class="c-op">:</span> <span class="c-str">"Clean, fast UIs"</span>,
+  <span class="c-prop">openTo</span><span class="c-op">:</span>  <span class="c-bool">true</span>,
+&#125;</code></pre>
+
+        <!-- Stats grid -->
+        <div class="stats-grid">
+          {stats.map(s => (
+            <div class="stat-item">
+              <span class="stat-n">{s.num}</span>
+              <span class="stat-l">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Text -->
+      <div class="about-text">
+        <div data-observe>
+          <span class="section-eyebrow">About Me</span>
+          <h2 class="section-title">
+            Building the web of<br />
+            <span>tomorrow, today.</span>
+          </h2>
+        </div>
+
+        <div class="about-paras" data-observe class="delay-1">
+          <p>
+            I'm a <strong>Senior Frontend Developer</strong> with 5+ years of experience developing
+            scalable, secure, and high-performance web applications — specialising in
+            <strong>fintech</strong>, banking, and enterprise platforms.
+          </p>
+          <p>
+            Currently at <strong>Daytona Systems India Pvt. Ltd.</strong>, I lead frontend development
+            for banking applications including fraud monitoring systems, payment platforms, and
+            customer onboarding workflows. I thrive in <strong>Agile/Scrum</strong> environments
+            and collaborate closely with cross-functional teams.
+          </p>
+          <p>
+            My toolkit spans <strong>React.js, Angular 16, Vue.js</strong> on the framework side,
+            combined with Redux/Redux Saga for state management, Material UI for design systems,
+            and RESTful API integration patterns for robust data flows.
+          </p>
+        </div>
+
+        <div class="about-quick" data-observe class="delay-2">
+          <div class="quick-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Bengaluru, Karnataka, India</span>
+          </div>
+          <div class="quick-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.07 3.36a2 2 0 0 1 1.95-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.25a16 16 0 0 0 6 6l.27-.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+91 84270 41280</span>
+          </div>
+          <div class="quick-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:arshadali1515@gmail.com" style="color:var(--green)">arshadali1515@gmail.com</a>
+          </div>
+          <div class="quick-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <a href="https://www.linkedin.com/in/arshad-ali-software-engineer/" target="_blank" rel="noopener noreferrer" style="color:var(--green)">linkedin.com/in/arshad-ali-software-engineer</a>
+          </div>
+        </div>
+
+        <div class="about-certs" data-observe class="delay-3">
+          <div class="cert-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            <div>
+              <span class="cert-title">Cisco Certified Technician</span>
+              <span class="cert-sub">Routing & Switching · Cisco Networking Academy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about { background: var(--bg-2); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 64px;
+  }
+
+  /* Code card */
+  .code-card {
+    background: #0D1117;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 16px;
+    background: #161B22;
+    border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot.red    { background: #FF5F57; }
+  .dot.yellow { background: #FEBC2E; }
+  .dot.green  { background: #28C840; }
+  .code-filename { margin-left: 8px; font-size: 0.8rem; color: var(--text-muted); }
+
+  .code-body {
+    padding: 24px;
+    font-family: var(--font-mono);
+    font-size: 0.83rem;
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+  .c-kw   { color: #FF79C6; }
+  .c-var  { color: #8BE9FD; }
+  .c-op   { color: #FF79C6; }
+  .c-prop { color: #50FA7B; }
+  .c-str  { color: #F1FA8C; }
+  .c-num  { color: #BD93F9; }
+  .c-bool { color: #BD93F9; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--border);
+  }
+  .stat-item {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat-item:nth-child(even) { border-right: none; }
+  .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none; }
+  .stat-n { font-size: 1.8rem; font-weight: 800; color: var(--green); line-height: 1; }
+  .stat-l { font-size: 0.72rem; color: var(--text-muted); text-align: center; }
+
+  /* Text side */
+  .about-text { padding-top: 8px; }
+  .about-text .section-title { margin-bottom: 24px; }
+
+  .about-paras {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .about-paras p { color: var(--text-dim); line-height: 1.8; }
+  .about-paras strong { color: var(--white); font-weight: 600; }
+
+  .about-quick {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--bg-3);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  .quick-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+  }
+  .quick-item a:hover { text-decoration: underline; }
+
+  .cert-badge {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    background: var(--green-dim);
+    border: 1px solid rgba(0,208,132,0.2);
+    border-radius: var(--radius);
+  }
+  .cert-title {
+    display: block;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--green);
+  }
+  .cert-sub {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 960px) {
+    .about-grid { grid-template-columns: 1fr; }
+  }
+</style>

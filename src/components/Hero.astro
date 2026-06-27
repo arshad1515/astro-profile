@@ -1,0 +1,333 @@
+---
+const roles = ['React.js Developer', 'Angular 16 Developer', 'Vue.js Developer', 'Fintech Engineer', 'Frontend Architect'];
+const techStack = ['React.js', 'TypeScript', 'Angular 16', 'Vue.js', 'Redux', 'Material UI'];
+---
+
+<section class="hero" id="home" aria-label="Introduction">
+  <!-- Background glows -->
+  <div class="blob" style="width:600px;height:600px;background:#00D084;top:-200px;left:-200px;"></div>
+  <div class="blob" style="width:500px;height:500px;background:#4F8EF7;top:30%;right:-200px;"></div>
+  <div class="blob" style="width:300px;height:300px;background:#00D084;bottom:-100px;left:40%;"></div>
+
+  <!-- Grid overlay -->
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <!-- Left Content -->
+    <div class="hero-content">
+      <p class="hero-greeting mono fade-up">
+        <span class="mono" style="color:var(--text-muted)">// Hello, World! I am</span>
+      </p>
+
+      <h1 class="hero-name fade-up-2">
+        Arshad<br />
+        <span class="hero-name-accent">Ali</span>
+      </h1>
+
+      <div class="hero-role-wrap fade-up-3" aria-live="polite">
+        <span class="hero-role-label">I build</span>
+        <span class="hero-role-typed" id="typed-text" aria-label="React.js Developer"></span>
+        <span class="hero-cursor mono" aria-hidden="true">|</span>
+      </div>
+
+      <p class="hero-desc fade-up-4">
+        Senior Frontend Developer with <strong>5+ years</strong> crafting scalable,
+        high-performance web applications for <span style="color:var(--green)">fintech</span>,
+        banking, and enterprise domains. Based in Bengaluru, India.
+      </p>
+
+      <div class="hero-actions fade-up-4">
+        <a href="#projects" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+          View Projects
+        </a>
+        <a href="#contact" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Hire Me
+        </a>
+        <a
+          href="https://www.linkedin.com/in/arshad-ali-software-engineer/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-ghost"
+          aria-label="LinkedIn Profile"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
+      <!-- Tech stack chips -->
+      <div class="hero-stack fade-up-4">
+        <span class="hero-stack-label">Tech stack:</span>
+        <div class="hero-chips">
+          {techStack.map(t => <span class="tag">{t}</span>)}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Avatar card -->
+    <div class="hero-visual fade-up-2">
+      <div class="avatar-card">
+        <div class="avatar-glow"></div>
+        <div class="avatar-img">
+          <!-- Replace src with your actual photo URL or path -->
+          <div class="avatar-placeholder" role="img" aria-label="Arshad Ali - Senior Frontend Developer">
+            <span class="avatar-initials">AA</span>
+          </div>
+        </div>
+        <div class="avatar-badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Available for opportunities
+        </div>
+        <!-- Floating stats -->
+        <div class="stat-card stat-card--tl">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Years Exp.</span>
+        </div>
+        <div class="stat-card stat-card--br">
+          <span class="stat-num">10+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll" aria-hidden="true">
+    <span class="scroll-line"></span>
+    <span class="mono" style="font-size:0.7rem;color:var(--text-muted);letter-spacing:2px;writing-mode:vertical-rl">SCROLL</span>
+  </div>
+</section>
+
+<script>
+  const words = ['React.js Developer', 'Angular 16 Developer', 'Vue.js Developer', 'Fintech Engineer', 'Frontend Architect'];
+  const el = document.getElementById('typed-text');
+  let wi = 0, ci = 0, deleting = false;
+
+  function type() {
+    if (!el) return;
+    const word = words[wi];
+    if (!deleting) {
+      el.textContent = word.slice(0, ++ci);
+      if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+    } else {
+      el.textContent = word.slice(0, --ci);
+      if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(type, 300); return; }
+    }
+    setTimeout(type, deleting ? 50 : 80);
+  }
+  setTimeout(type, 800);
+</script>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: var(--nav-h);
+  }
+
+  /* Grid bg */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,208,132,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,208,132,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    align-items: center;
+    gap: 60px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+  }
+
+  /* Left */
+  .hero-greeting { color: var(--text-muted); margin-bottom: 16px; }
+
+  .hero-name {
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -3px;
+    margin-bottom: 20px;
+  }
+  .hero-name-accent {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--green);
+    text-stroke: 2px var(--green);
+  }
+
+  .hero-role-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 600;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    min-height: 2rem;
+  }
+  .hero-role-label { color: var(--text-muted); }
+  .hero-role-typed { color: var(--green); }
+  .hero-cursor {
+    color: var(--green);
+    animation: blink 1s infinite;
+    font-size: 1.2em;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+    max-width: 500px;
+    margin-bottom: 32px;
+  }
+  .hero-desc strong { color: var(--white); font-weight: 700; }
+
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
+
+  .hero-stack { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .hero-stack-label { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; }
+  .hero-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Right — Avatar Card */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .avatar-card {
+    position: relative;
+    width: 340px;
+    height: 380px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .avatar-glow {
+    position: absolute;
+    inset: -1px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--green), transparent, var(--blue));
+    opacity: 0.3;
+    z-index: -1;
+  }
+
+  .avatar-img { position: relative; }
+
+  .avatar-placeholder {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--green), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(0,208,132,0.3);
+    box-shadow: 0 0 40px var(--green-glow);
+  }
+  .avatar-initials {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #000;
+    letter-spacing: -2px;
+  }
+
+  .avatar-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border-radius: 100px;
+    background: rgba(0,208,132,0.08);
+    border: 1px solid rgba(0,208,132,0.2);
+    font-size: 0.8rem;
+    color: var(--green);
+    font-weight: 500;
+  }
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+    animation: blink 2s infinite;
+  }
+
+  /* Floating stat cards */
+  .stat-card {
+    position: absolute;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .stat-card--tl { top: 24px; left: -32px; }
+  .stat-card--br { bottom: 24px; right: -32px; }
+  .stat-num {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--green);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.7rem; color: var(--text-muted); }
+
+  /* Scroll indicator */
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--green), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+  @keyframes scrollPulse {
+    0%,100%{opacity:0;transform:scaleY(0.5);transform-origin:top}
+    50%{opacity:1;transform:scaleY(1)}
+  }
+
+  @media (max-width: 960px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; padding-top: 24px; }
+    .hero-desc, .hero-role-wrap, .hero-stack { margin-inline: auto; }
+    .hero-role-wrap, .hero-stack { justify-content: center; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { order: -1; }
+    .avatar-card { width: 280px; height: 300px; }
+    .avatar-placeholder { width: 120px; height: 120px; }
+    .avatar-initials { font-size: 2.5rem; }
+    .stat-card--tl { top: 12px; left: -16px; }
+    .stat-card--br { bottom: 12px; right: -16px; }
+    .hero-scroll { display: none; }
+  }
+</style>

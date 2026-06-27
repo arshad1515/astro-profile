@@ -1,0 +1,187 @@
+---
+const education = [
+  {
+    degree:  'Bachelor of Technology (B.Tech)',
+    field:   'Computer Science & Engineering',
+    school:  'Lovely Professional University',
+    period:  '2017 – 2020',
+    icon:    '🎓',
+  },
+  {
+    degree:  'Diploma',
+    field:   'Computer Science & Engineering',
+    school:  'Lovely Professional University',
+    period:  '2014 – 2017',
+    icon:    '📜',
+  },
+  {
+    degree:  'Higher Secondary Education (PSEB)',
+    field:   'Science',
+    school:  'Everest Public Senior Secondary School, Ludhiana',
+    period:  '2013 – 2014',
+    icon:    '🏫',
+  },
+];
+
+const certs = [
+  {
+    name:   'Cisco Certified Technician – Routing & Switching',
+    issuer: 'Cisco Networking Academy',
+    icon:   '🏆',
+  },
+];
+
+const languages = ['English', 'Hindi', 'Punjabi'];
+---
+
+<section class="education" id="education">
+  <div class="container edu-grid">
+    <!-- Education -->
+    <div>
+      <div data-observe>
+        <span class="section-eyebrow">Academic Background</span>
+        <h2 class="section-title">Education &<br /><span>Credentials</span></h2>
+      </div>
+
+      <div class="edu-cards">
+        {education.map((e, i) => (
+          <div class={`edu-card card delay-${i+1}`} data-observe>
+            <span class="edu-icon" aria-hidden="true">{e.icon}</span>
+            <div>
+              <h3 class="edu-degree">{e.degree}</h3>
+              <p class="edu-field">{e.field}</p>
+              <p class="edu-school">{e.school}</p>
+              <span class="tag" style="margin-top:8px;display:inline-block">{e.period}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Right: Certs + Languages -->
+    <div class="right-col">
+      <div data-observe>
+        <h3 class="col-title">Certifications</h3>
+        {certs.map(c => (
+          <div class="cert-card card">
+            <div class="cert-icon-wrap" aria-hidden="true">{c.icon}</div>
+            <div>
+              <p class="cert-name">{c.name}</p>
+              <p class="cert-issuer">{c.issuer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="lang-section" data-observe>
+        <h3 class="col-title">Languages</h3>
+        <div class="lang-chips">
+          {languages.map(l => (
+            <div class="lang-chip">
+              <span class="lang-name">{l}</span>
+              <span class="lang-level">Fluent</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Fun facts -->
+      <div class="fun-facts" data-observe>
+        <h3 class="col-title">At a Glance</h3>
+        <div class="facts-grid">
+          {[
+            { icon: '📍', label: 'Based in', val: 'Bengaluru, India' },
+            { icon: '🌐', label: 'LinkedIn', val: '500+ connections' },
+            { icon: '⚡', label: 'Focus', val: 'Fintech & Banking' },
+            { icon: '🤝', label: 'Open to', val: 'New Opportunities' },
+          ].map(f => (
+            <div class="fact-item">
+              <span class="fact-icon" aria-hidden="true">{f.icon}</span>
+              <div>
+                <span class="fact-label">{f.label}</span>
+                <span class="fact-val">{f.val}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .education { background: var(--bg-2); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .edu-cards { display: flex; flex-direction: column; gap: 16px; margin-top: 36px; }
+
+  .edu-card {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 22px;
+  }
+  .edu-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+  .edu-degree { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+  .edu-field  { font-size: 0.85rem; color: var(--green); font-weight: 500; margin-bottom: 2px; }
+  .edu-school { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* Right col */
+  .right-col { display: flex; flex-direction: column; gap: 36px; padding-top: 8px; }
+
+  .col-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .cert-card {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 20px;
+  }
+  .cert-icon-wrap { font-size: 1.8rem; flex-shrink: 0; }
+  .cert-name { font-size: 0.9rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cert-issuer { font-size: 0.78rem; color: var(--text-muted); }
+
+  .lang-chips { display: flex; flex-direction: column; gap: 10px; }
+  .lang-chip {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--bg-3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .lang-name  { font-size: 0.9rem; font-weight: 600; color: var(--white); }
+  .lang-level { font-size: 0.75rem; color: var(--green); font-weight: 500; }
+
+  .facts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .fact-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .fact-icon { font-size: 1.2rem; }
+  .fact-label { display: block; font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+  .fact-val   { display: block; font-size: 0.82rem; font-weight: 600; color: var(--white); margin-top: 2px; }
+
+  @media (max-width: 900px) {
+    .edu-grid { grid-template-columns: 1fr; }
+  }
+</style>
